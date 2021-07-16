@@ -1,0 +1,11 @@
+name: SwapHotBar
+version: ${project.version}
+main: cn.kevyn.swaphotbar.SwapHotBar
+api-version: 1.17
+authors: [ kevyn ]
+description: allow players to swap hotbar in your server.
+website: kevyn.cn
+commands:
+  shb:
+    description: SwapHotBar's commands
+    usage: /shb reload | ...
