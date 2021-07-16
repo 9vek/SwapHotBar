@@ -1,5 +1,5 @@
 # SwapHotBar
-a minecraft spigot plugin that change the relationship between the bag and the hotbar, scroll each row's items in your backpack to your hot bar by simply pressing shift + mouse wheel
+a minecraft spigot plugin that change the relationship between the backpack and the hot bar, scroll rows' items in your backpack to your hot bar by simply pressing shift + mouse wheel
 
 ## [INTRODUCTION]
 
