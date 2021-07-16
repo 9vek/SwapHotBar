@@ -1,6 +1,10 @@
 # SwapHotBar
 a minecraft spigot plugin that change the relationship between the backpack and the hot bar, scroll rows' items in your backpack to your hot bar by simply pressing shift + mouse wheel
 
+SpigotMC release: [SwapHotBar | SpigotMC - High Performance Minecraft](https://www.spigotmc.org/resources/swaphotbar.94333/)
+
+MCBBS release: [\[机制\]蛋挞君的快捷物品栏切换——滚动快捷栏，更高效率，更多乐趣！[1.12-1.17]](https://www.mcbbs.net/thread-1215585-1-1.html)
+
 ## [INTRODUCTION]
 
 There are some mods (for example Quark) that allow players to switch between multiple hot bars.
