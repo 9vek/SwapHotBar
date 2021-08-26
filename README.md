@@ -25,5 +25,6 @@ Just see the following sample inventory and gif to understand the usage:
 
 - Please fully test before use. If you have any problem, please give me feedback as soon as possible.
 - If the inventory's slot numbers has been modified, this plugin may have problems.
+- Give players "shb.ignore" permission to disable the plugin on them
 - Use console command "/SHB reload" to reload configuration file
 
