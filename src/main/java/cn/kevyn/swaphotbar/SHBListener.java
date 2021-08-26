@@ -1,5 +1,6 @@
 package cn.kevyn.swaphotbar;
 
+import net.milkbowl.vault.permission.Permission;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -14,12 +15,15 @@ import java.util.List;
 
 public class SHBListener implements Listener {
 
+    public static SHBListener INSTANCE;
+
     private SwapHotBar shb;
     private List<Player> list;
     private int swapInterval;
 
-    public SHBListener(SwapHotBar shb) {
-        this.shb = shb;
+    public SHBListener() {
+        SHBListener.INSTANCE = this;
+        this.shb = SwapHotBar.INSTANCE;
         list = new ArrayList<>();
         loadConfig();
     }
@@ -27,6 +31,13 @@ public class SHBListener implements Listener {
     @EventHandler (priority = EventPriority.HIGHEST)
     public void onPlayerSwap(PlayerItemHeldEvent event) {
         Player player = event.getPlayer();
+
+        Permission permission = shb.getPermission();
+        if (permission != null) {
+            if (permission.has(player, "shb.ignore"))
+                return;
+        }
+
         if (list.contains(player))
             return;
 
