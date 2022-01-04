@@ -30,7 +30,7 @@ Just see the following sample inventory and gif to understand the usage:
 
 - Give players `shb.ignore` permission to disable the plugin on them, it is useful when some players don't like the feature.
 
-  [**Fix in 1.4**] now ops can default use the feature of this plugin, you can also give ops `shb.ignore` to disable the feature on them.
+  [**Fix in 1.4**] now ops can by default use the feature of this plugin, you can also give ops `shb.ignore` to disable the feature on them.
 
 - Use console command `/SHB reload` to reload configuration file
 
