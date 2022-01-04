@@ -28,7 +28,7 @@ public class SHBListener implements Listener {
         loadConfig();
     }
 
-    @EventHandler (priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerSwap(PlayerItemHeldEvent event) {
         Player player = event.getPlayer();
 
@@ -48,6 +48,7 @@ public class SHBListener implements Listener {
         int previousSlot = event.getPreviousSlot();
         int newSlot = event.getNewSlot();
         int t = newSlot - previousSlot;
+
         synchronized (inventory) {
             if (t == 1 || t == -8) {
                 List<ItemStack> bar3 = copyBar(inventory, 3);
@@ -78,18 +79,12 @@ public class SHBListener implements Listener {
 
     }
 
-    private void changeSlot(PlayerInventory inventory, int i1, int i2) {
-        ItemStack temp = inventory.getItem(i1);
-        inventory.setItem(i1, inventory.getItem(i2));
-        inventory.setItem(i2, temp);
-    }
-
     private List<ItemStack> copyBar(PlayerInventory inventory, int n) {
         List<ItemStack> bar = new ArrayList<>();
         if (n < 0 || n > 3)
             return null;
 
-        for (int i = n*9; i < 9 + n*9; i++) {
+        for (int i = n * 9; i < 9 + n * 9; i++) {
             bar.add(inventory.getItem(i));
         }
 
@@ -101,13 +96,14 @@ public class SHBListener implements Listener {
             return;
 
         for (int i = 0; i < 9; i++) {
-            inventory.setItem(i+n*9, bar.get(i));
+            inventory.setItem(i + n * 9, bar.get(i));
         }
     }
 
     public void loadConfig() {
         swapInterval = shb.getConfig().getInt("swap-interval");
-        if (swapInterval < 1) swapInterval = 1;
+        if (swapInterval < 1)
+            swapInterval = 1;
     }
 
 }

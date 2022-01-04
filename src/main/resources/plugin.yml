@@ -5,6 +5,9 @@ api-version: 1.13
 author: kevyn
 description: allow players to swap hotbar by pressing shift + mouse wheel.
 website: kevyn.cn
+permissions:
+  shb.ignore:
+    default: false
 commands:
   shb:
     description: SwapHotBar's commands
