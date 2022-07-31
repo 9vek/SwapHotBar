@@ -2,6 +2,7 @@ package cn.kevyn.swaphotbar;
 
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -9,9 +10,9 @@ public class SwapHotBar extends JavaPlugin {
 
     public static SwapHotBar INSTANCE;
 
-    public final String ENABLE = ChatColor.BLUE + "[SwapHotBar] 插件已经成功启用！";
-    public final String DISABLE = ChatColor.RED + "[SwapHotBar] 插件已经成功禁用！";
-    public final String RELOAD = ChatColor.GREEN + "[SwapHotBar] 插件配置文件已重新功载入！";
+    public final String ENABLE = "[SwapHotBar]" + ChatColor.BLUE + " plugin is now enabled！";
+    public final String DISABLE = "[SwapHotBar]" + ChatColor.RED + " plugin is now disabled！";
+    public final String RELOAD = "[SwapHotBar]" + ChatColor.GREEN + " config is now successfully reloaded！";
 
     private Permission permission;
 
@@ -27,15 +28,18 @@ public class SwapHotBar extends JavaPlugin {
 
         dependenciesReady();
 
+        CommandExecutor commandExecutor = new SHBCommand();
         getServer().getPluginManager().registerEvents(new SHBListener(), this);
-        getCommand("shb").setExecutor(new SHBCommand());
-
+        getCommand("shb-reload").setExecutor(commandExecutor);
+        getCommand("shb-on").setExecutor(commandExecutor);
+        getCommand("shb-off").setExecutor(commandExecutor);
         getServer().getConsoleSender().sendMessage(ENABLE);
     }
 
     @Override
     public void onDisable() {
         super.onDisable();
+        SHBListener.INSTANCE.saveIgnoredPlayers();
         getServer().getConsoleSender().sendMessage(DISABLE);
     }
 

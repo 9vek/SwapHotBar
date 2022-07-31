@@ -18,13 +18,14 @@ public class SHBListener implements Listener {
     public static SHBListener INSTANCE;
 
     private SwapHotBar shb;
-    private List<Player> list;
+    private List<Player> coolingPlayers;
     private int swapInterval;
+    private List<String> ignoredPlayers;
 
     public SHBListener() {
         SHBListener.INSTANCE = this;
         this.shb = SwapHotBar.INSTANCE;
-        list = new ArrayList<>();
+        coolingPlayers = new ArrayList<>();
         loadConfig();
     }
 
@@ -32,13 +33,16 @@ public class SHBListener implements Listener {
     public void onPlayerSwap(PlayerItemHeldEvent event) {
         Player player = event.getPlayer();
 
-        Permission permission = shb.getPermission();
-        if (permission != null) {
-            if (permission.has(player, "shb.ignore"))
-                return;
-        }
+        // Permission permission = shb.getPermission();
+        // if (permission != null) {
+        //     if (permission.has(player, "shb.ignore"))
+        //         return;
+        // }
 
-        if (list.contains(player))
+        if (ignoredPlayers.contains(player.getName()))
+            return;
+
+        if (coolingPlayers.contains(player))
             return;
 
         if (!player.isSneaking())
@@ -68,12 +72,12 @@ public class SHBListener implements Listener {
 
         }
 
-        list.add(player);
+        coolingPlayers.add(player);
         BukkitScheduler scheduler = shb.getServer().getScheduler();
         scheduler.scheduleSyncDelayedTask(shb, new Runnable() {
             @Override
             public void run() {
-                list.remove(player);
+                coolingPlayers.remove(player);
             }
         }, swapInterval);
 
@@ -100,10 +104,29 @@ public class SHBListener implements Listener {
         }
     }
 
+    public void addIgnoredPlayer(String playerName) {
+        if (!ignoredPlayers.contains(playerName))
+            ignoredPlayers.add(playerName);
+            saveIgnoredPlayers();
+    }
+
+    public void removeIgnoredPlayer(String playerName) {
+        if (ignoredPlayers.contains(playerName)) {
+            ignoredPlayers.remove(playerName);
+            saveIgnoredPlayers();
+        }
+    }
+
     public void loadConfig() {
         swapInterval = shb.getConfig().getInt("swap-interval");
         if (swapInterval < 1)
             swapInterval = 1;
+        ignoredPlayers = shb.getConfig().getStringList("ignored-players");
+    }
+
+    public void saveIgnoredPlayers() {
+        shb.getConfig().set("ignored-players", ignoredPlayers);
+        shb.saveConfig();
     }
 
 }
