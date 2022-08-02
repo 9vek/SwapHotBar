@@ -10,6 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.scheduler.BukkitScheduler;
 
+import javax.swing.text.StyledEditorKit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class SHBListener implements Listener {
     private SwapHotBar shb;
     private List<Player> coolingPlayers;
     private int swapInterval;
-    private List<String> ignoredPlayers;
+    private List<String> enabledPlayers;
 
     public SHBListener() {
         SHBListener.INSTANCE = this;
@@ -39,7 +40,7 @@ public class SHBListener implements Listener {
         //         return;
         // }
 
-        if (ignoredPlayers.contains(player.getName()))
+        if (!enabledPlayers.contains(player.getName()))
             return;
 
         if (coolingPlayers.contains(player))
@@ -104,28 +105,32 @@ public class SHBListener implements Listener {
         }
     }
 
-    public void addIgnoredPlayer(String playerName) {
-        if (!ignoredPlayers.contains(playerName))
-            ignoredPlayers.add(playerName);
-            saveIgnoredPlayers();
+    public void addEnabledPlayer(String playerName) {
+        if (!enabledPlayers.contains(playerName))
+            enabledPlayers.add(playerName);
+            saveEnabledPlayers();
     }
 
-    public void removeIgnoredPlayer(String playerName) {
-        if (ignoredPlayers.contains(playerName)) {
-            ignoredPlayers.remove(playerName);
-            saveIgnoredPlayers();
+    public void removeEnabledPlayer(String playerName) {
+        if (enabledPlayers.contains(playerName)) {
+            enabledPlayers.remove(playerName);
+            saveEnabledPlayers();
         }
+    }
+
+    public Boolean isEnabledPlayer(String playerName) {
+        return enabledPlayers.contains(playerName);
     }
 
     public void loadConfig() {
         swapInterval = shb.getConfig().getInt("swap-interval");
         if (swapInterval < 1)
             swapInterval = 1;
-        ignoredPlayers = shb.getConfig().getStringList("ignored-players");
+        enabledPlayers = shb.getConfig().getStringList("enabled-players");
     }
 
-    public void saveIgnoredPlayers() {
-        shb.getConfig().set("ignored-players", ignoredPlayers);
+    public void saveEnabledPlayers() {
+        shb.getConfig().set("enabled-players", enabledPlayers);
         shb.saveConfig();
     }
 

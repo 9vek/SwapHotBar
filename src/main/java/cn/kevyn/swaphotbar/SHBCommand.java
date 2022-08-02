@@ -19,8 +19,8 @@ public class SHBCommand implements CommandExecutor {
         else if (command.getName().equals("shb-off")) {
             if ((commandSender instanceof Player)) {
                 String playerName = commandSender.getName();
-                SHBListener.INSTANCE.addIgnoredPlayer(playerName);
-                commandSender.sendMessage("[SwapHotBar]" + ChatColor.RED + " swap function is now disabled on you. ");
+                SHBListener.INSTANCE.removeEnabledPlayer(playerName);
+                commandSender.sendMessage("[Bot][快捷工具栏]" + ChatColor.RED + " 你的交换功能现在被禁用了. ");
                 return true;
             }
         }
@@ -28,12 +28,25 @@ public class SHBCommand implements CommandExecutor {
         else if (command.getName().equals("shb-on" )) {
             if ((commandSender instanceof Player)) {
                 String playerName = commandSender.getName();
-                SHBListener.INSTANCE.removeIgnoredPlayer(playerName);
-                commandSender.sendMessage("[SwapHotBar]" + ChatColor.GREEN + " swap function is now enabled on you. ");
+                SHBListener.INSTANCE.addEnabledPlayer(playerName);
+                commandSender.sendMessage("[Bot][快捷工具栏]" + ChatColor.GREEN + " 你的交换功能现在开启了. ");
                 return true;
             } 
         }
 
+        else if (command.getName().equals("shb-change")) {
+            if ((commandSender instanceof Player)) {
+                String playerName = commandSender.getName();
+                if (SHBListener.INSTANCE.isEnabledPlayer(playerName)) {
+                    SHBListener.INSTANCE.removeEnabledPlayer(playerName);
+                    commandSender.sendMessage("[Bot][快捷工具栏]" + ChatColor.RED + " 你的交换功能现在被禁用了. ");
+                } else {
+                    SHBListener.INSTANCE.addEnabledPlayer(playerName);
+                    commandSender.sendMessage("[Bot][快捷工具栏]" + ChatColor.GREEN + " 你的交换功能现在开启了. ");
+                }
+                return true;
+            }
+        }
         return false;
     }
 
