@@ -1,4 +1,16 @@
 # SwapHotBar
+> 本项目fork [KevynTang/SwapHotBar: a minecraft spigot plugin change the relationship between the player bag and hotbar (github.com)](https://github.com/KevynTang/SwapHotBar)
+>
+> 目的是实现另外一种业务逻辑, 满足不同服主的需求, 本人并不是作者, 只是改了一点点代码
+>
+> 区别:
+>
+> 1.支持 shb-change命令, 可以只用一个命令切换状态
+>
+> 2.不使用禁用列表,而使用启用列表, 这样子不为玩家默认开启, 避免玩家不适应
+
+
+
 A minecraft spigot plugin that change the mechanism of the backpack and the hot bar, swap rows' of items in your backpack to your hot bar by simply using **shift + mouse wheel**
 
 SpigotMC release: [SwapHotBar | SpigotMC - High Performance Minecraft](https://www.spigotmc.org/resources/swaphotbar.94333/)

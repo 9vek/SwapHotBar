@@ -9,12 +9,11 @@
 
     <name>SwapHotBar</name>
 
-    <description>swap hotbar</description>
+    <description>A Minecraft Plugin</description>
     <properties>
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <url>kevyn.cn</url>
 
     <build>
         <plugins>
