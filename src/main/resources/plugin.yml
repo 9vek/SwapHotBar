@@ -2,21 +2,23 @@ name: SwapHotBar
 version: ${project.version}
 main: cn.kevyn.swaphotbar.SwapHotBar
 api-version: 1.18
-author: kevyn
-description: allow players to swap hotbar by pressing shift + mouse wheel.
-website: kevyn.cn
+author: kevyn,AlanZhao
+description: 允许玩家通过按shift +鼠标滚轮来切换快捷栏.
 permissions:
   shb.switch:
-    default: true
+    default: false
   shb.reload:
     default: op
 commands:
   shb-reload:
-    description: you can use this command to reload the config file
+    description: 可以使用此命令重新加载配置文件
     permission: shb.reload
   shb-on:
-    description: you can use this command to switch on the swap function on you.
+    description: 可以使用该命令开启交换工具栏功能.
     permission: shb.switch
   shb-off:
-    description: you can use this command to switch off the swap function on you.
+    description: 可以使用该命令关闭交换工具栏功能.
+    permission: shb.switch
+  shb-change:
+    description: 可以使用该命令切换交换工具栏功能状态.
     permission: shb.switch

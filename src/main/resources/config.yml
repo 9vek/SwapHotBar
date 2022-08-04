@@ -3,5 +3,5 @@
 # 如果间隔过小，在切换的过程中容易卡住
 # 如果间隔过大，会影响玩家连续切换时的体验
 swap-interval: 5
-ignored-players:
-  - examplePlayer
+enabled-players:
+  - example
