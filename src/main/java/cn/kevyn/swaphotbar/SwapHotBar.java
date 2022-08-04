@@ -10,9 +10,9 @@ public class SwapHotBar extends JavaPlugin {
 
     public static SwapHotBar INSTANCE;
 
-    public final String ENABLE = "[Bot][快捷工具栏]" + ChatColor.BLUE + " plugin is now enabled！";
-    public final String DISABLE = "[Bot][快捷工具栏]" + ChatColor.RED + " plugin is now disabled！";
-    public final String RELOAD = "[Bot][快捷工具栏]" + ChatColor.GREEN + " config is now successfully reloaded！";
+    public final String ENABLE = "[快捷工具栏]" + ChatColor.BLUE + " plugin is now enabled！";
+    public final String DISABLE = "[快捷工具栏]" + ChatColor.RED + " plugin is now disabled！";
+    public final String RELOAD = "[快捷工具栏]" + ChatColor.GREEN + " config is now successfully reloaded！";
 
     private Permission permission;
 

@@ -20,7 +20,7 @@ public class SHBCommand implements CommandExecutor {
             if ((commandSender instanceof Player)) {
                 String playerName = commandSender.getName();
                 SHBListener.INSTANCE.removeEnabledPlayer(playerName);
-                commandSender.sendMessage("[Bot][快捷工具栏]" + ChatColor.RED + " 你的交换功能现在被禁用了. ");
+                commandSender.sendMessage("[快捷工具栏]" + ChatColor.RED + " 你的交换功能现在被禁用了. ");
                 return true;
             }
         }
@@ -29,7 +29,7 @@ public class SHBCommand implements CommandExecutor {
             if ((commandSender instanceof Player)) {
                 String playerName = commandSender.getName();
                 SHBListener.INSTANCE.addEnabledPlayer(playerName);
-                commandSender.sendMessage("[Bot][快捷工具栏]" + ChatColor.GREEN + " 你的交换功能现在开启了. ");
+                commandSender.sendMessage("[快捷工具栏]" + ChatColor.GREEN + " 你的交换功能现在开启了. ");
                 return true;
             } 
         }
@@ -39,10 +39,10 @@ public class SHBCommand implements CommandExecutor {
                 String playerName = commandSender.getName();
                 if (SHBListener.INSTANCE.isEnabledPlayer(playerName)) {
                     SHBListener.INSTANCE.removeEnabledPlayer(playerName);
-                    commandSender.sendMessage("[Bot][快捷工具栏]" + ChatColor.RED + " 你的交换功能现在被禁用了. ");
+                    commandSender.sendMessage("[快捷工具栏]" + ChatColor.RED + " 你的交换功能现在被禁用了. ");
                 } else {
                     SHBListener.INSTANCE.addEnabledPlayer(playerName);
-                    commandSender.sendMessage("[Bot][快捷工具栏]" + ChatColor.GREEN + " 你的交换功能现在开启了. ");
+                    commandSender.sendMessage("[快捷工具栏]" + ChatColor.GREEN + " 你的交换功能现在开启了. ");
                 }
                 return true;
             }
